@@ -2,6 +2,13 @@
 #include <stdlib.h>
 int main(){
     printf("%f", (1.0/9));
+    int a[9];
+    for (int i = 0; i<3; i++){
+        for (int j = 0; j<3; j++){
+            a[i][j] = i*3+j;
+        }
+    }
+    printf("%f", a[0][0]);
 }
 //printf("%d\n", get_array(a.red)[0][0]);
 //printf("%d\n", a.red->width == vermelho->width);
