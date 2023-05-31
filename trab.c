@@ -1,8 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "stb_image.h"
-#include "stb_image_write.h"
+#include "imports/stb_image.h"
+#include "imports/stb_image_write.h"
 
 typedef struct array2d_t{
   int height, width;
@@ -30,6 +32,7 @@ typedef struct imagem_rgba{
 imagem_rgba read(char* path) {
     imagem_rgba input;
     uint8_t* rgb_image = stbi_load(path, &input.width, &input.height, &input.bpp, 0);
+    //stbi_write_png("sem_alteracao.png", input.width, input.height, input.bpp, rgb_image, input.width*input.bpp);
 
     input.red = malloc( sizeof *input.red + sizeof(uint8_t[input.height][input.width]) );
     input.green = malloc( sizeof *input.green + sizeof(uint8_t[input.height][input.width]) );
@@ -164,8 +167,9 @@ imagem_rgba padding(imagem_rgba input) {
     return padded;
 }
 
-array2d_t* dot_multiplication_matrix(array2d_t* channel, int kernel_dimension, double (*kernel)[kernel_dimension]) {
-    uint8_t soma = 0;
+array2d_t* dot_multiplication_matrix(array2d_t* channel, int kernel_dimension, float (*kernel)[kernel_dimension]) {
+    float soma = 0;
+    uint8_t soma_uint;
     array2d_t* output_channel;
     output_channel = malloc( sizeof *output_channel + sizeof(uint8_t[channel->height][channel->width]) );
 
@@ -180,9 +184,11 @@ array2d_t* dot_multiplication_matrix(array2d_t* channel, int kernel_dimension, d
                     
                 }
             }
-            //soma = soma/9;
-            //printf("%f\n", soma);
-            get_array(output_channel)[x][y] = soma;
+            //if (x==0 && y==0)printf("%f\n", soma);
+            soma_uint = (uint8_t)soma;
+            //if (x==0 && y==0)printf("%d\n", soma_uint);
+            get_array(output_channel)[x][y] = soma_uint;
+            //if (x==0 && y==0)printf("%d\n", get_array(output_channel)[x][y]);
             soma = 0;
         }
     }
@@ -200,32 +206,16 @@ array2d_t* dot_multiplication_matrix(array2d_t* channel, int kernel_dimension, d
 
 
 int main() {
-    double MEDIAN_KERNEL[3][3] = {{0,0,0},{0,1,0},{0,0,0}};
-    //printf("%f\n", MEDIAN_KERNEL[0][0]);
-    imagem_rgba a = read("cachorro.png");
-    /*imagem_rgba b = padding(a);
+    float MEDIAN_KERNEL[3][3] = {{1.0/9, 1.0/9, 1.0/9}, {1.0/9, 1.0/9, 1.0/9}, {1.0/9, 1.0/9, 1.0/9}};
+    imagem_rgba a = read("./imagens_de_teste/teste.png");
+    imagem_rgba b = padding(a);
     array2d_t* vermelho = dot_multiplication_matrix(b.red, 3, MEDIAN_KERNEL);
     array2d_t* verde = dot_multiplication_matrix(b.green, 3, MEDIAN_KERNEL);
     array2d_t* azul = dot_multiplication_matrix(b.blue, 3, MEDIAN_KERNEL);
-    array2d_t* transparencia = dot_multiplication_matrix(b.alpha, 3, MEDIAN_KERNEL);
-    a.red = vermelho; a.green = verde; a.blue = azul; a.alpha = transparencia;
+        a.red = vermelho; a.green = verde; a.blue = azul;
+
     
-    
-    for (int i = 0; i < a.red->height; i++){
-        for (int j = 0; j < a.red->width; j++){
-            printf("%d  ", get_array(a.red)[i][j]);
-        }
-        printf("\n");
-    }
-    array2d_t* soma = dot_multiplication_matrix(b.red, 3, MEDIAN_KERNEL);
-    for (int i = 0; i < soma->height; i++){
-        for (int j = 0; j < soma->width; j++){
-            printf("%.0f  ", get_array(soma)[i][j]);
-        }
-        printf("\n");
-    }*/
-    
-    write(a, "./imagem_nada.png");
+    write(a, "./imagens_alteradas/teste_borrado.png");
     return 1;   
 }
 
