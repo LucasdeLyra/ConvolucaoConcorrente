@@ -6,6 +6,8 @@ import sys
 
 np.set_printoptions(threshold=sys.maxsize)
 
+
+
 def processImage(image): 
     image = img.imread(image)
     return image
@@ -228,11 +230,13 @@ def prewitt_outline(image, output_file_path='./', output_file_name = 'PREWITT1')
     return image
 
 
-image = processImage('./teste.png')
+print(convolution2D(np.array([[1,2,3],[4,5,6],[7,8,9]]), np.array([[1/9,1/9,1/9],[1/9,1/9,1/9],[1/9,1/9,1/9]])))
+
+"""image = processImage('./teste.png')
 prewitt_outline(image, './python')
 sobel_outline(image, './python')
 
 urso = processImage('./urso.png')
 
 medianblur(urso, 1, './python')
-gaussian_blur(urso, 1, './python')
+gaussian_blur(urso, 1, './python')"""
