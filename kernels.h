@@ -97,6 +97,8 @@ array2d_t_float * call_create_kernel(int type, int dimension) {
         case 1:
             return create_average_kernel(dimension);
         case 2:
+            return create_prewitt_kernel_x(dimension);
+        case 3:
             return create_prewitt_kernel_y(dimension);
         default:
             return create_identity_kernel(dimension);

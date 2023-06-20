@@ -37,6 +37,7 @@ rgba_image read(char* path) {
     uint8_t* rgb_image = stbi_load(path, &input.width, &input.height, &input.bpp, 0);
     //stbi_write_png("sem_alteracao.png", input.width, input.height, input.bpp, rgb_image, input.width*input.bpp);
 
+
     input.red = malloc( sizeof *input.red + sizeof(uint8_t[input.height][input.width]) );
     input.green = malloc( sizeof *input.green + sizeof(uint8_t[input.height][input.width]) );
     input.blue = malloc( sizeof *input.blue + sizeof(uint8_t[input.height][input.width]) );
@@ -108,9 +109,11 @@ rgba_image padding(rgba_image input) {
     padded.red = malloc( sizeof *padded.red + sizeof(uint8_t[padded.height][padded.width]) );
     padded.green = malloc( sizeof *padded.green + sizeof(uint8_t[padded.height][padded.width]) );
     padded.blue = malloc( sizeof *padded.blue + sizeof(uint8_t[padded.height][padded.width]) );
-    padded.alpha = malloc( sizeof *padded.alpha + sizeof(uint8_t[padded.height][padded.width]) );
-    padded.red->width = padded.green->width = padded.blue->width = padded.alpha->width = padded.width;
-    padded.red->height = padded.green->height = padded.blue->height = padded.alpha->height = padded.height;
+    //padded.alpha = malloc( sizeof *padded.alpha + sizeof(uint8_t[padded.height][padded.width]) );
+    padded.red->width = padded.green->width = padded.blue->width = padded.width;
+    padded.red->height = padded.green->height = padded.blue->height = padded.height;
+    //padded.alpha->width = padded.width;
+    //padded.alpha->height = padded.height;
 
     for (int i = 0; i < padded.height; i++){
         for (int j = 0; j < padded.width; j++){
@@ -118,20 +121,20 @@ rgba_image padding(rgba_image input) {
                 get_array(padded.red)[i][j] = get_array(input.red)[i-1][j-1];
                 get_array(padded.green)[i][j] = get_array(input.green)[i-1][j-1];
                 get_array(padded.blue)[i][j] = get_array(input.blue)[i-1][j-1];
-                get_array(padded.red)[i][j] = get_array(input.red)[i-1][j-1];
+                //get_array(padded.red)[i][j] = get_array(input.red)[i-1][j-1];
 
             }
             else if (i == 0 && j != 0 && j != padded.width-1) {
                 get_array(padded.red)[i][j] = get_array(input.red)[i][j-1];
                 get_array(padded.green)[i][j] = get_array(input.green)[i][j-1];
                 get_array(padded.blue)[i][j] = get_array(input.blue)[i][j-1];
-                get_array(padded.alpha)[i][j] = get_array(input.alpha)[i][j-1];
+                //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i][j-1];
             }
             else if (i == (padded.height-1) && j != 0 && j != padded.width-1) {
                 get_array(padded.red)[i][j] = get_array(input.red)[i-2][j-1];
                 get_array(padded.green)[i][j] = get_array(input.green)[i-2][j-1];
                 get_array(padded.blue)[i][j] = get_array(input.blue)[i-2][j-1];
-                get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-2][j-1];
+                //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-2][j-1];
             }
 
             if (j == 0){
@@ -139,19 +142,19 @@ rgba_image padding(rgba_image input) {
                     get_array(padded.red)[i][j] = get_array(input.red)[i][j];
                     get_array(padded.green)[i][j] = get_array(input.green)[i][j];
                     get_array(padded.blue)[i][j] = get_array(input.blue)[i][j];
-                    get_array(padded.alpha)[i][j] = get_array(input.alpha)[i][j];
+                    //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i][j];
                 }
                 else if (i == (padded.height-1)) {
                     get_array(padded.red)[i][j] = get_array(input.red)[i-2][j];
                     get_array(padded.green)[i][j] = get_array(input.green)[i-2][j];
                     get_array(padded.blue)[i][j] = get_array(input.blue)[i-2][j];
-                    get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-2][j];
+                    //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-2][j];
                 }
                 else{
                     get_array(padded.red)[i][j] = get_array(input.red)[i-1][j];
                     get_array(padded.green)[i][j] = get_array(input.green)[i-1][j];
                     get_array(padded.blue)[i][j] = get_array(input.blue)[i-1][j];
-                    get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-1][j];
+                    //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-1][j];
                 }
                 
             }
@@ -160,7 +163,7 @@ rgba_image padding(rgba_image input) {
                 get_array(padded.red)[i][j] = get_array(padded.red)[i][j-1];
                 get_array(padded.green)[i][j] = get_array(padded.green)[i][j-1];
                 get_array(padded.blue)[i][j] = get_array(padded.blue)[i][j-1];
-                get_array(padded.alpha)[i][j] = get_array(padded.alpha)[i][j-1];
+                //get_array(padded.alpha)[i][j] = get_array(padded.alpha)[i][j-1];
             }
         }
     }
@@ -206,13 +209,40 @@ int main(int argc, char *argv[]) {
         argv[3] : kernel type
         argv[4] : kernel dimensions
     */
+    double start, finish, elapsed;
+
+    GET_TIME(start);
     rgba_image input = read(argv[1]);
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e; ", elapsed);
+
+
+    GET_TIME(start);
     rgba_image padded = padding(input);
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e; ", elapsed);
+
+    GET_TIME(start);
     array2d_t_float *kernel = call_create_kernel(atoi(argv[3]), atoi(argv[4]));
-    
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e; ", elapsed);
+
+
+    GET_TIME(start);
     dot_multiplication_matrix(&input, &padded, kernel);
-    
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e; ", elapsed);
+
+    GET_TIME(start);
     write(input, argv[2]);
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e\n", elapsed);
+
     return 1;
 }
 

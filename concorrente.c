@@ -85,6 +85,7 @@ rgba_image read(char* path) {
             }
         }
     }
+
     return input;
 }
 
@@ -128,9 +129,11 @@ rgba_image padding(rgba_image input) {
     padded.red = malloc( sizeof *padded.red + sizeof(uint8_t[padded.height][padded.width]) );
     padded.green = malloc( sizeof *padded.green + sizeof(uint8_t[padded.height][padded.width]) );
     padded.blue = malloc( sizeof *padded.blue + sizeof(uint8_t[padded.height][padded.width]) );
-    padded.alpha = malloc( sizeof *padded.alpha + sizeof(uint8_t[padded.height][padded.width]) );
-    padded.red->width = padded.green->width = padded.blue->width = padded.alpha->width = padded.width;
-    padded.red->height = padded.green->height = padded.blue->height = padded.alpha->height = padded.height;
+    //padded.alpha = malloc( sizeof *padded.alpha + sizeof(uint8_t[padded.height][padded.width]) );
+    padded.red->width = padded.green->width = padded.blue->width = padded.width;
+    padded.red->height = padded.green->height = padded.blue->height = padded.height;
+    //padded.alpha->width = padded.width;
+    //padded.alpha->height = padded.height;
 
     for (int i = 0; i < padded.height; i++){
         for (int j = 0; j < padded.width; j++){
@@ -138,20 +141,20 @@ rgba_image padding(rgba_image input) {
                 get_array(padded.red)[i][j] = get_array(input.red)[i-1][j-1];
                 get_array(padded.green)[i][j] = get_array(input.green)[i-1][j-1];
                 get_array(padded.blue)[i][j] = get_array(input.blue)[i-1][j-1];
-                get_array(padded.red)[i][j] = get_array(input.red)[i-1][j-1];
+                //get_array(padded.red)[i][j] = get_array(input.red)[i-1][j-1];
 
             }
             else if (i == 0 && j != 0 && j != padded.width-1) {
                 get_array(padded.red)[i][j] = get_array(input.red)[i][j-1];
                 get_array(padded.green)[i][j] = get_array(input.green)[i][j-1];
                 get_array(padded.blue)[i][j] = get_array(input.blue)[i][j-1];
-                get_array(padded.alpha)[i][j] = get_array(input.alpha)[i][j-1];
+                //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i][j-1];
             }
             else if (i == (padded.height-1) && j != 0 && j != padded.width-1) {
                 get_array(padded.red)[i][j] = get_array(input.red)[i-2][j-1];
                 get_array(padded.green)[i][j] = get_array(input.green)[i-2][j-1];
                 get_array(padded.blue)[i][j] = get_array(input.blue)[i-2][j-1];
-                get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-2][j-1];
+                //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-2][j-1];
             }
 
             if (j == 0){
@@ -159,19 +162,19 @@ rgba_image padding(rgba_image input) {
                     get_array(padded.red)[i][j] = get_array(input.red)[i][j];
                     get_array(padded.green)[i][j] = get_array(input.green)[i][j];
                     get_array(padded.blue)[i][j] = get_array(input.blue)[i][j];
-                    get_array(padded.alpha)[i][j] = get_array(input.alpha)[i][j];
+                    //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i][j];
                 }
                 else if (i == (padded.height-1)) {
                     get_array(padded.red)[i][j] = get_array(input.red)[i-2][j];
                     get_array(padded.green)[i][j] = get_array(input.green)[i-2][j];
                     get_array(padded.blue)[i][j] = get_array(input.blue)[i-2][j];
-                    get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-2][j];
+                    //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-2][j];
                 }
                 else{
                     get_array(padded.red)[i][j] = get_array(input.red)[i-1][j];
                     get_array(padded.green)[i][j] = get_array(input.green)[i-1][j];
                     get_array(padded.blue)[i][j] = get_array(input.blue)[i-1][j];
-                    get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-1][j];
+                    //get_array(padded.alpha)[i][j] = get_array(input.alpha)[i-1][j];
                 }
                 
             }
@@ -180,7 +183,7 @@ rgba_image padding(rgba_image input) {
                 get_array(padded.red)[i][j] = get_array(padded.red)[i][j-1];
                 get_array(padded.green)[i][j] = get_array(padded.green)[i][j-1];
                 get_array(padded.blue)[i][j] = get_array(padded.blue)[i][j-1];
-                get_array(padded.alpha)[i][j] = get_array(padded.alpha)[i][j-1];
+                //get_array(padded.alpha)[i][j] = get_array(padded.alpha)[i][j-1];
             }
         }
     }
@@ -198,7 +201,7 @@ void * dot_multiplication_matrix(void* arg) {
 
 
     for (int c = 0; c < 3; c++){
-        printf("Thread %d começou a rodar para a cor %d\n", args->thread_id, c);
+        //printf("Thread %d começou a rodar para a cor %d\n", args->thread_id, c);
         for (int x = args->thread_id; x < output_colors[c]->height; x += args->NTHREADS) {
             for (int y = 0; y < output_colors[c]->width; y++) {
                 for (int i = 0; i < args->kernel->height; i++) {
@@ -211,7 +214,7 @@ void * dot_multiplication_matrix(void* arg) {
                 sum = 0;
             }
         }
-        printf("Thread %d se bloqueou na cor %d esperando as outras threads\n", args->thread_id, c);
+        //printf("Thread %d se bloqueou na cor %d esperando as outras threads\n", args->thread_id, c);
         barreira(args->NTHREADS);
     }
     pthread_exit(NULL);
@@ -226,7 +229,7 @@ int main(int argc, char *argv[]) {
         argv[4] : kernel dimensions
         argv[5] : number of threads
     */
-
+    double start, finish, elapsed;
 
     pthread_t tid_sistema[atoi(argv[5])];
     t_Args *arg;
@@ -234,10 +237,25 @@ int main(int argc, char *argv[]) {
     pthread_mutex_init(&x_mutex, NULL);
     pthread_cond_init (&x_cond, NULL);
 
+    GET_TIME(start);
     rgba_image input = read(argv[1]);
-    rgba_image padded = padding(input);
-    array2d_t_float * kernel = call_create_kernel(atoi(argv[3]), atoi(argv[4]));
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e; ", elapsed);
 
+    GET_TIME(start);
+    rgba_image padded = padding(input);
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e; ", elapsed);
+
+    GET_TIME(start);
+    array2d_t_float * kernel = call_create_kernel(atoi(argv[3]), atoi(argv[4]));
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e; ", elapsed);
+
+    GET_TIME(start);
     for (int id = 0; id < atoi(argv[5]); id++) {
         arg = malloc(sizeof(t_Args));
         if (arg == NULL) {
@@ -261,10 +279,20 @@ int main(int argc, char *argv[]) {
             printf("--ERRO: pthread_join() \n"); exit(-1); 
         } 
     }
-
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e; ", elapsed);
 
     
     write(input, argv[2]);
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("%e\n", elapsed);
+
     return 1;   
 }
 
+// https://br.freepik.com/fotos-gratis/close-up-de-uma-abelha-amarela-polinizadora-flor-ai-generativa_41073554.htm#query=bee%204k&position=0&from_view=search&track=ais
+// https://www.pexels.com/photo/adult-brown-tabby-cat-747795/
+// https://www.publicdomainpictures.net/pt/view-image.php?image=148735&picture=panda-vermelho
+// https://br.pinterest.com/pin/751397519065761954/

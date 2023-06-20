@@ -64,7 +64,6 @@ def get_individual_color_channels(image):
     a = []
 
     for row in image:
-
         red_line = []
         green_line = []
         blue_line = []
@@ -101,7 +100,7 @@ def unite_color_channels(channels_list):
     r = channels_list[0]
     g = channels_list[1]
     b = channels_list[2]
-    if len(channels_list)==4:
+    if len(channels_list) == 4:
         a = channels_list[3]
         for i in range(len(r)):
             linha = []
@@ -110,7 +109,7 @@ def unite_color_channels(channels_list):
                 aux.append(r[i][j])
                 aux.append(g[i][j])
                 aux.append(b[i][j])
-                aux.append(a[i][j])
+                aux.append(a[i][j]*255)
                 linha.append(aux)
             final.append(linha)
     else:
@@ -150,7 +149,7 @@ def convolution2D(image, kernel, padding=1):
     for y in range(image.shape[1]):
         for x in range(image.shape[0]):
             try:
-                output[x, y] = np.sum(kernel* image_padded[x: x + xKernShape, y: y + yKernShape])
+                output[x, y] = round(np.sum(kernel* image_padded[x: x + xKernShape, y: y + yKernShape])*255)
             except:
                 break
 
@@ -165,21 +164,21 @@ def gaussian_blur(image, iterations=1,output_file_path='./', output_file_name = 
     for i in range(iterations):
         for color in range(len(color_channels)):
             color_channels[color] = convolution2D(color_channels[color], kernel)
-        image = unite_color_channels([color_channels[2], color_channels[1], color_channels[0]])
-        output_path = output_file_path + '/' + output_file_name + str(i) + '.jpg'
-        cv2.imwrite(output_path, (image*255).astype(np.uint8))
+        image = unite_color_channels([color_channels[2], color_channels[1], color_channels[0], color_channels[3]])
+        output_path = output_file_path + '/' + output_file_name + str(i) + '.png'
+        cv2.imwrite(output_path, (image).astype(np.uint8))
     return image
 
 
-def medianblur(image, iterations=1, output_file_path='./', output_file_name = 'median'):
+def averageblur(image, iterations=1, output_file_path='./', output_file_name = 'average'):
     MEDIAN_KERNEL = np.array([[1/9, 1/9, 1/9], [1/9, 1/9, 1/9], [1/9, 1/9, 1/9]])
     color_channels = get_individual_color_channels(image)
     for i in range(iterations):
-        for color in range(len(color_channels)):
+        for color in range(len(color_channels)-1):
             color_channels[color] = convolution2D(color_channels[color], MEDIAN_KERNEL)
-        image = unite_color_channels([color_channels[2], color_channels[1], color_channels[0]])
-        output_path = output_file_path + '/' + output_file_name + str(i) + '.jpg'
-        cv2.imwrite(output_path, (image*255).astype(np.uint8))
+        image = unite_color_channels([color_channels[2], color_channels[1], color_channels[0], color_channels[3]])
+        output_path = output_file_path + '/' + output_file_name + str(i) + '.png'
+        cv2.imwrite(output_path, (image).astype(np.uint8))
     return image
 
 
@@ -192,9 +191,9 @@ def sobel_outline(image, output_file_path='./', output_file_name = 'sobel'):
     imageGx = convolution2D(image, SOBEL_GX_KERNEL)
     imageGy = convolution2D(image, SOBEL_GY_KERNEL)
     output_path = output_file_path + '/' + 'gxsobel' + '.jpg'
-    cv2.imwrite(output_path, (np.array(imageGx)*255).astype(np.uint8))
+    cv2.imwrite(output_path, (np.array(imageGx)).astype(np.uint8))
     output_path = output_file_path + '/' + 'gysobel' + '.jpg'
-    cv2.imwrite(output_path, (np.array(imageGy)*255).astype(np.uint8))
+    cv2.imwrite(output_path, (np.array(imageGy)).astype(np.uint8))
 
     final_image = []
     for i in range(len(imageGy)-1):
@@ -203,7 +202,7 @@ def sobel_outline(image, output_file_path='./', output_file_name = 'sobel'):
             final_image_line.append(np.sqrt(imageGx[i][j]**2+imageGy[i][j]**2))
         final_image.append(final_image_line)
     output_path = output_file_path + '/' + output_file_name + '.jpg'
-    cv2.imwrite(output_path, (np.array(final_image)*255).astype(np.uint8))
+    cv2.imwrite(output_path, (np.array(final_image)).astype(np.uint8))
     return image
 
 
@@ -215,9 +214,9 @@ def prewitt_outline(image, output_file_path='./', output_file_name = 'prewitt'):
     imageGx = convolution2D(image, PREWITT_GX_KERNEL)
     imageGy = convolution2D(image, PREWITT_GY_KERNEL)
     output_path = output_file_path + '/' + 'gxprewitt' + '.jpg'
-    cv2.imwrite(output_path, (np.array(imageGx)*255).astype(np.uint8))
+    cv2.imwrite(output_path, (np.array(imageGx)).astype(np.uint8))
     output_path = output_file_path + '/' + 'gyprewitt' + '.jpg'
-    cv2.imwrite(output_path, (np.array(imageGy)*255).astype(np.uint8))
+    cv2.imwrite(output_path, (np.array(imageGy)).astype(np.uint8))
     
     final_image = []
     for i in range(len(imageGy)-1):
@@ -226,15 +225,15 @@ def prewitt_outline(image, output_file_path='./', output_file_name = 'prewitt'):
             final_image_line.append(np.sqrt(imageGx[i][j]**2+imageGy[i][j]**2))
         final_image.append(final_image_line)
     output_path = output_file_path + '/' + output_file_name + '.jpg'
-    cv2.imwrite(output_path, (np.array(final_image)*255).astype(np.uint8))
+    cv2.imwrite(output_path, (np.array(final_image)).astype(np.uint8))
     return image
 
 
-image = read_image('./../imagens_de_teste/teste.png')
-prewitt_outline(image, './images')
-sobel_outline(image, './images')
+#image = read_image('./../imagens_de_teste/teste.png')
+#prewitt_outline(image, './images')
+#sobel_outline(image, './images')
 
 urso = read_image('./../imagens_de_teste/urso.png')
 
-medianblur(urso, 1, './images')
-gaussian_blur(urso, 1, './images')
+averageblur(urso, 1, './images')
+#gaussian_blur(urso, 1, './images')
