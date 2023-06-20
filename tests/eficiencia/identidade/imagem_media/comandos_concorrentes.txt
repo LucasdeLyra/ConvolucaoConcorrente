@@ -1,0 +1,2 @@
+./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_1.png 0 3 1 >> identidade/imagem_media/1_threads.txt
+./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_2.png 0 3 2 >> identidade/imagem_media/2_threads.txt

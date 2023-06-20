@@ -52,10 +52,10 @@ for tipo_index in tipos:
         threads = 1
         while threads < 9:
             for i in range(QTD_AMOSTRAGEM):
-                sleep(0.5)
+                sleep(0.2)
                 call(f'{comando_concorrente(imagens[tamanho], threads, tipo_index)} 3 {threads} >> {tipos[tipo_index]}/imagem_{tamanho}/{threads}_threads.txt', shell=True)
                 if threads == 1:
-                    sleep(0.5)
+                    sleep(0.2)
                     call(f'{comando_sequencial(imagens[tamanho], tipo_index)} 3 >> {tipos[tipo_index]}/imagem_{tamanho}/sequencial.txt', shell=True)
                     
             call(f'echo "{comando_concorrente(imagens[tamanho], threads, tipo_index)} 3 {threads} >> {tipos[tipo_index]}/imagem_{tamanho}/{threads}_threads.txt" >> {tipos[tipo_index]}/imagem_{tamanho}/comandos_concorrentes.txt', shell=True)

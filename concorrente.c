@@ -289,6 +289,13 @@ int main(int argc, char *argv[]) {
     elapsed = finish - start;
     printf("%e\n", elapsed);
 
+    free(input);
+    free(args);
+    free(padded);
+    free(tid_sistema);
+    pthread_mutex_destroy(&x_mutex);
+    pthread_cond_destroy(&x_cond);
+
     return 1;   
 }
 
