@@ -43,10 +43,10 @@ def get_altogether_convolution_plot(column_name, title):
           'grande': '5600x3200'}
     for tipo_index in tipos:
         if tipo_index == 2:
-            imagens = {'minuscula': '4000x3000',
-            'pequena': '1920x1080',
-            'media': '401x403',
-            'grande': '250x250'
+            imagens = {'minuscula': '250x250',
+            'pequena': '401x403',
+            'media': '1920x1080',
+            'grande': '4000x3000'
             }
         for image_size in imagens:
             dir = rf'./../tests/eficiencia/{tipos[tipo_index]}/imagem_{image_size}'
