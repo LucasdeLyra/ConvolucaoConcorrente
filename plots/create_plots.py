@@ -42,16 +42,18 @@ def get_altogether_convolution_plot(column_name, title):
           'media': '2480x1365', 
           'grande': '5600x3200'}
     for tipo_index in tipos:
+        
         if tipo_index == 2:
             imagens = {'minuscula': '250x250',
             'pequena': '401x403',
             'media': '1920x1080',
             'grande': '4000x3000'
             }
+            
         for image_size in imagens:
             dir = rf'./../tests/eficiencia/{tipos[tipo_index]}/imagem_{image_size}'
             merged_csv = merge_all_csv_from_directory(dir)
-
+            
             fig = sns.relplot(data=merged_csv, x='index', y=f'{column_name}', hue='Threads', hue_order=['Sequencial',1,2,4,8], aspect=1.7, palette='deep')
             fig.set(xlabel = 'Iterações', ylabel = 'Tempo (s)', title = f'{title} para uma imagem de {imagens[image_size]}')
             fig.savefig(rf'./plots/{tipos[tipo_index]}/{tipos[tipo_index]}_{column_name}_{image_size}.png')
@@ -62,12 +64,41 @@ def get_altogether_convolution_plot(column_name, title):
             fig.savefig(rf'./plots/{column_name}_{kernel}_{image_size}_separado.png')
             plt.close()"""
 
+def all_in_one_plot(column_name, title):
+    f, ax = plt.subplots(4,4)
+    f.set_figwidth(30)
+    f.set_figheight(20)
+    f.suptitle(title)
+    
+    imagens = {'minuscula': '236x236', 
+          'pequena': '615x407', 
+          'media': '2480x1365', 
+          'grande': '5600x3200'}
+    
+    for tipo_index in tipos:
+        
+        if tipo_index == 2:
+            imagens = {'minuscula': '250x250',
+            'pequena': '401x403',
+            'media': '1920x1080',
+            'grande': '4000x3000'
+            }
+            
+        for j, image_size in enumerate(imagens):
+            dir = rf'./../tests/eficiencia/{tipos[tipo_index]}/imagem_{image_size}'
+            merged_csv = merge_all_csv_from_directory(dir)
 
-get_altogether_convolution_plot('convolution', 'Tempo de convolução')
-get_altogether_convolution_plot('read', 'Tempo de leitura')
+            fig  = sns.scatterplot(data=merged_csv, x='index', y=f'{column_name}', hue='Threads', hue_order=['Sequencial',1,2,4,8], legend=False, palette='deep', ax=ax[tipo_index][j])
+            fig.set(xlabel = 'Iterações', ylabel = 'Tempo (s)', title = f'{tipos[tipo_index]} - {imagens[image_size]}')
+            #f.legend(bbox_to_anchor=(1.02, 0.55), loc='upper left', borderaxespad=-.5)
+    return f
+
+
+all_in_one_plot('convolution', 'Tempo de convolução').savefig(rf'./plots/all_in_one_convolution.png')
+"""get_altogether_convolution_plot('read', 'Tempo de leitura')
 get_altogether_convolution_plot('pre_processing', 'Tempo de pré-processamento')
 get_altogether_convolution_plot('write', 'Tempo de escrita')
-get_altogether_convolution_plot('tempo_total', 'Tempo total')
+get_altogether_convolution_plot('tempo_total', 'Tempo total')"""
 
 
 
