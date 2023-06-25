@@ -1,4 +1,4 @@
-./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_2.png 2 3 >> prewitt/imagem_minuscula/sequencial.txt
-./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_2.png 2 3 >> prewitt/imagem_minuscula/sequencial.txt
-./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_2.png 2 3 >> prewitt/imagem_minuscula/sequencial.txt
-./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_2.png 2 3 >> prewitt/imagem_minuscula/sequencial.txt
+./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_2.png 2 3 >> prewitt/imagem_minuscula/sequencial.csv
+./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_2.png 2 3 >> prewitt/imagem_minuscula/sequencial.csv
+./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_2.png 2 3 >> prewitt/imagem_minuscula/sequencial.csv
+./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_2.png 2 3 >> prewitt/imagem_minuscula/sequencial.csv

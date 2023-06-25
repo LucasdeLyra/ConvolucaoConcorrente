@@ -104,7 +104,7 @@ rgba_image read_greyscale(char* path) {
 
     for (int i = 0; i < input.height; i++) {
         for (int j = 0; j < input.width; j++) {
-            for (int k = 0; k < input.bpp; k++){
+            for (int k = 0; k < input.bpp; k++) {
                 switch (k) {
                     case 0:
                         get_array(input.red)[i][j] = round(rgb_image[i*input.width*input.bpp+j*input.bpp+k]*0.299);

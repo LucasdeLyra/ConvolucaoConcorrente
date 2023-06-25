@@ -1,4 +1,4 @@
-./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_2_1.png 2 3 1 >> prewitt/imagem_pequena/1_threads.txt
-./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_2_2.png 2 3 2 >> prewitt/imagem_pequena/2_threads.txt
-./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_2_4.png 2 3 4 >> prewitt/imagem_pequena/4_threads.txt
-./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_2_8.png 2 3 8 >> prewitt/imagem_pequena/8_threads.txt
+./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_2_1.png 2 3 1 >> prewitt/imagem_pequena/1_threads.csv
+./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_2_2.png 2 3 2 >> prewitt/imagem_pequena/2_threads.csv
+./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_2_4.png 2 3 4 >> prewitt/imagem_pequena/4_threads.csv
+./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_2_8.png 2 3 8 >> prewitt/imagem_pequena/8_threads.csv

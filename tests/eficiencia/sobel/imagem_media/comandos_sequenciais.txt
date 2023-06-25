@@ -1,4 +1,4 @@
-./../../trab ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/sequencial/scooby_doo_3.png 3 3 >> sobel/imagem_media/sequencial.txt
-./../../trab ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/sequencial/scooby_doo_3.png 3 3 >> sobel/imagem_media/sequencial.txt
-./../../trab ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/sequencial/scooby_doo_3.png 3 3 >> sobel/imagem_media/sequencial.txt
-./../../trab ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/sequencial/scooby_doo_3.png 3 3 >> sobel/imagem_media/sequencial.txt
+./../../trab ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/sequencial/scooby_doo_3.png 3 3 >> sobel/imagem_media/sequencial.csv
+./../../trab ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/sequencial/scooby_doo_3.png 3 3 >> sobel/imagem_media/sequencial.csv
+./../../trab ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/sequencial/scooby_doo_3.png 3 3 >> sobel/imagem_media/sequencial.csv
+./../../trab ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/sequencial/scooby_doo_3.png 3 3 >> sobel/imagem_media/sequencial.csv

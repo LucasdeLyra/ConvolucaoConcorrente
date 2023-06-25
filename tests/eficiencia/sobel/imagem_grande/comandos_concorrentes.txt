@@ -1,4 +1,4 @@
-./../../concorrente ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/concorrente/TRIBE_3_1.png 3 3 1 >> sobel/imagem_grande/1_threads.txt
-./../../concorrente ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/concorrente/TRIBE_3_2.png 3 3 2 >> sobel/imagem_grande/2_threads.txt
-./../../concorrente ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/concorrente/TRIBE_3_4.png 3 3 4 >> sobel/imagem_grande/4_threads.txt
-./../../concorrente ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/concorrente/TRIBE_3_8.png 3 3 8 >> sobel/imagem_grande/8_threads.txt
+./../../concorrente ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/concorrente/TRIBE_3_1.png 3 3 1 >> sobel/imagem_grande/1_threads.csv
+./../../concorrente ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/concorrente/TRIBE_3_2.png 3 3 2 >> sobel/imagem_grande/2_threads.csv
+./../../concorrente ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/concorrente/TRIBE_3_4.png 3 3 4 >> sobel/imagem_grande/4_threads.csv
+./../../concorrente ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/concorrente/TRIBE_3_8.png 3 3 8 >> sobel/imagem_grande/8_threads.csv

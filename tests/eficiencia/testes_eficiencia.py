@@ -17,32 +17,6 @@ imagem_grande = 'abelha'
 comando_concorrente = lambda imagem, num, tipo: f'./../../concorrente "./../../imagens_de_teste/{imagem}.png" "./../../imagens_alteradas/concorrente/{imagem}_{tipo}_{num}.png" {tipo}'
 comando_sequencial = lambda imagem, tipo: f'./../../trab "./../../imagens_de_teste/{imagem}.png" "./../../imagens_alteradas/sequencial/{imagem}_{tipo}.png" {tipo}'
 
-"""
-cmds = {'minuscula': [f'{comando_concorrente(imagem_minuscula, 8, 1)} 3 8',
-                      f'{comando_concorrente(imagem_minuscula, 4, 1)} 3 4', 
-                      f'{comando_concorrente(imagem_minuscula, 2, 1)} 3 2', 
-                      f'{comando_concorrente(imagem_minuscula, 1, 1)} 3 1', 
-                      f'{comando_sequencial(imagem_minuscula, 1)} 3'],
-        
-        'pequena': [f'{comando_concorrente(imagem_pequena, 8, 1)} 3 8',
-                    f'{comando_concorrente(imagem_pequena, 4, 1)} 3 4',
-                    f'{comando_concorrente(imagem_pequena, 2, 1)} 3 2',
-                    f'{comando_concorrente(imagem_pequena, 1, 1)} 3 1',
-                    f'{comando_sequencial(imagem_pequena, 1)} 3'],
-        
-        'media': [f'{comando_concorrente(imagem_media, 8, 1)} 3 8',
-                  f'{comando_concorrente(imagem_media, 4, 1)} 3 4',
-                  f'{comando_concorrente(imagem_media, 2, 1)} 3 2',
-                  f'{comando_concorrente(imagem_media, 1, 1)} 3 1',
-                  f'{comando_sequencial(imagem_media, 1)} 3'],
-        
-        'grande': [f'{comando_concorrente(imagem_grande, 8, 1)} 3 8',
-                   f'{comando_concorrente(imagem_grande, 4, 1)} 3 4',
-                   f'{comando_concorrente(imagem_grande, 2, 1)} 3 2',
-                   f'{comando_concorrente(imagem_grande, 1, 1)} 3 1',
-                   f'{comando_sequencial(imagem_grande, 1)} 3']
-        }"""
-
 tipos = {0 : 'identidade',
          1 : 'media',
          2 : 'prewitt',
@@ -63,6 +37,6 @@ for tipo_index in tipos:
                 if threads == 1:
                     call(f'{comando_sequencial(imagens[tamanho], tipo_index)} 3 >> {tipos[tipo_index]}/imagem_{tamanho}/sequencial.csv', shell=True)
                     
-            call(f'echo "{comando_concorrente(imagens[tamanho], threads, tipo_index)} 3 {threads} >> {tipos[tipo_index]}/imagem_{tamanho}/{threads}_threads.txt" >> {tipos[tipo_index]}/imagem_{tamanho}/comandos_concorrentes.txt', shell=True)
-            call(f'echo "{comando_sequencial(imagens[tamanho], tipo_index)} 3 >> {tipos[tipo_index]}/imagem_{tamanho}/sequencial.txt" >> {tipos[tipo_index]}/imagem_{tamanho}/comandos_sequenciais.txt', shell=True)
+            call(f'echo "{comando_concorrente(imagens[tamanho], threads, tipo_index)} 3 {threads} >> {tipos[tipo_index]}/imagem_{tamanho}/{threads}_threads.csv" >> {tipos[tipo_index]}/imagem_{tamanho}/comandos_concorrentes.txt', shell=True)
+            call(f'echo "{comando_sequencial(imagens[tamanho], tipo_index)} 3 >> {tipos[tipo_index]}/imagem_{tamanho}/sequencial.csv" >> {tipos[tipo_index]}/imagem_{tamanho}/comandos_sequenciais.txt', shell=True)
             threads *= 2

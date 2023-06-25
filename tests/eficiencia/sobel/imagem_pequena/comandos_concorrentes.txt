@@ -1,4 +1,5 @@
-./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_3_1.png 3 3 1 >> sobel/imagem_pequena/1_threads.txt
-./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_3_2.png 3 3 2 >> sobel/imagem_pequena/2_threads.txt
-./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_3_4.png 3 3 4 >> sobel/imagem_pequena/4_threads.txt
-./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_3_8.png 3 3 8 >> sobel/imagem_pequena/8_threads.txt
+./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_3_1.png 3 3 1 >> sobel/imagem_pequena/1_threads.csv
+./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_3_2.png 3 3 2 >> sobel/imagem_pequena/2_threads.csv
+./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_3_4.png 3 3 4 >> sobel/imagem_pequena/4_threads.csv
+./../../concorrente ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/concorrente/chuu_flamenguista_3_8.png 3 3 8 >> sobel/imagem_pequena/8_threads.csv
+'

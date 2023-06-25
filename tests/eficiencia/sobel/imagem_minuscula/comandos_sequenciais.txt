@@ -1,4 +1,4 @@
-./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_3.png 3 3 >> sobel/imagem_minuscula/sequencial.txt
-./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_3.png 3 3 >> sobel/imagem_minuscula/sequencial.txt
-./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_3.png 3 3 >> sobel/imagem_minuscula/sequencial.txt
-./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_3.png 3 3 >> sobel/imagem_minuscula/sequencial.txt
+./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_3.png 3 3 >> sobel/imagem_minuscula/sequencial.csv
+./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_3.png 3 3 >> sobel/imagem_minuscula/sequencial.csv
+./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_3.png 3 3 >> sobel/imagem_minuscula/sequencial.csv
+./../../trab ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/sequencial/hugo_nobrega_ponto_com_3.png 3 3 >> sobel/imagem_minuscula/sequencial.csv

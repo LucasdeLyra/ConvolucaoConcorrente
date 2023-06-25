@@ -1,4 +1,4 @@
-./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_2_1.png 2 3 1 >> prewitt/imagem_minuscula/1_threads.txt
-./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_2_2.png 2 3 2 >> prewitt/imagem_minuscula/2_threads.txt
-./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_2_4.png 2 3 4 >> prewitt/imagem_minuscula/4_threads.txt
-./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_2_8.png 2 3 8 >> prewitt/imagem_minuscula/8_threads.txt
+./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_2_1.png 2 3 1 >> prewitt/imagem_minuscula/1_threads.csv
+./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_2_2.png 2 3 2 >> prewitt/imagem_minuscula/2_threads.csv
+./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_2_4.png 2 3 4 >> prewitt/imagem_minuscula/4_threads.csv
+./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_2_8.png 2 3 8 >> prewitt/imagem_minuscula/8_threads.csv

@@ -1,4 +1,4 @@
-./../../trab ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/sequencial/chuu_flamenguista_2.png 2 3 >> prewitt/imagem_pequena/sequencial.txt
-./../../trab ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/sequencial/chuu_flamenguista_2.png 2 3 >> prewitt/imagem_pequena/sequencial.txt
-./../../trab ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/sequencial/chuu_flamenguista_2.png 2 3 >> prewitt/imagem_pequena/sequencial.txt
-./../../trab ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/sequencial/chuu_flamenguista_2.png 2 3 >> prewitt/imagem_pequena/sequencial.txt
+./../../trab ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/sequencial/chuu_flamenguista_2.png 2 3 >> prewitt/imagem_pequena/sequencial.csv
+./../../trab ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/sequencial/chuu_flamenguista_2.png 2 3 >> prewitt/imagem_pequena/sequencial.csv
+./../../trab ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/sequencial/chuu_flamenguista_2.png 2 3 >> prewitt/imagem_pequena/sequencial.csv
+./../../trab ./../../imagens_de_teste/chuu_flamenguista.png ./../../imagens_alteradas/sequencial/chuu_flamenguista_2.png 2 3 >> prewitt/imagem_pequena/sequencial.csv

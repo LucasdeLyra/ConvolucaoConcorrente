@@ -4,10 +4,9 @@ import seaborn as sns
 pd.set_option('display.max_rows', 5000)
 COLUMNS = ['read', 'pre_processing', 'create_kernel', 'convolution', 'write']
 
-imagens = {'minuscula': '236x236', 
-          'pequena': '615x407', 
-          'media': '2480x1365', 
-          'grande': '5600x3200'}
+
+
+
 tipos = {0 : 'identidade',
          1 : 'media',
          2 : 'prewitt',
@@ -17,7 +16,7 @@ tipos = {0 : 'identidade',
 def merge_all_csv_from_directory(directory):
     final_df = 0
 
-    final_df = pd.read_csv(rf'{directory}/sequencial.txt', sep=';', header=None, names=COLUMNS)
+    final_df = pd.read_csv(rf'{directory}/sequencial.csv', sep=';', header=None, names=COLUMNS)
     
     final_df['tempo_total'] = final_df.sum(axis=1)
     final_df = final_df.reset_index()
@@ -26,7 +25,7 @@ def merge_all_csv_from_directory(directory):
     
     i = 1
     while i <= 8:
-        df = pd.read_csv(rf'{directory}/{i}_threads.txt', sep=';', header=None, names=COLUMNS)
+        df = pd.read_csv(rf'{directory}/{i}_threads.csv', sep=';', header=None, names=COLUMNS)
         df['tempo_total'] = df.sum(axis=1)
         df = df.reset_index()
         num_threads = [i]*len(df)
@@ -38,12 +37,16 @@ def merge_all_csv_from_directory(directory):
 
 
 def get_altogether_convolution_plot(column_name, title):
+    imagens = {'minuscula': '236x236', 
+          'pequena': '615x407', 
+          'media': '2480x1365', 
+          'grande': '5600x3200'}
     for tipo_index in tipos:
         if tipo_index == 2:
-            imagens = {'minuscula': 'hugo_nobrega_ponto_com',
-            'pequena': 'chuu_flamenguista',
-            'media': 'scooby_doo',
-            'grande': 'TRIBE'
+            imagens = {'minuscula': '4000x3000',
+            'pequena': '1920x1080',
+            'media': '401x403',
+            'grande': '250x250'
             }
         for image_size in imagens:
             dir = rf'./../tests/eficiencia/{tipos[tipo_index]}/imagem_{image_size}'

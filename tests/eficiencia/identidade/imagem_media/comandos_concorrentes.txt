@@ -1,4 +1,4 @@
-./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_1.png 0 3 1 >> identidade/imagem_media/1_threads.txt
-./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_2.png 0 3 2 >> identidade/imagem_media/2_threads.txt
-./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_4.png 0 3 4 >> identidade/imagem_media/4_threads.txt
-./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_8.png 0 3 8 >> identidade/imagem_media/8_threads.txt
+./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_1.png 0 3 1 >> identidade/imagem_media/1_threads.csv
+./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_2.png 0 3 2 >> identidade/imagem_media/2_threads.csv
+./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_4.png 0 3 4 >> identidade/imagem_media/4_threads.csv
+./../../concorrente ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/concorrente/gato_0_8.png 0 3 8 >> identidade/imagem_media/8_threads.csv
