@@ -20,7 +20,7 @@ def merge_all_csv_from_directory(directory):
     
     final_df['tempo_total'] = final_df.sum(axis=1)
     final_df = final_df.reset_index()
-    num_threads = [0]*len(final_df)
+    num_threads = ['Sequencial']*len(final_df)
     final_df['Threads'] = num_threads
     
     i = 1
@@ -52,7 +52,7 @@ def get_altogether_convolution_plot(column_name, title):
             dir = rf'./../tests/eficiencia/{tipos[tipo_index]}/imagem_{image_size}'
             merged_csv = merge_all_csv_from_directory(dir)
 
-            fig = sns.relplot(data=merged_csv, x='index', y=f'{column_name}', hue='Threads', hue_order=[0,1,2,4,8], aspect=1.7, palette='deep')
+            fig = sns.relplot(data=merged_csv, x='index', y=f'{column_name}', hue='Threads', hue_order=['Sequencial',1,2,4,8], aspect=1.7, palette='deep')
             fig.set(xlabel = 'Iterações', ylabel = 'Tempo (s)', title = f'{title} para uma imagem de {imagens[image_size]}')
             fig.savefig(rf'./plots/{tipos[tipo_index]}/{tipos[tipo_index]}_{column_name}_{image_size}.png')
             plt.close()
