@@ -1,4 +1,0 @@
-./../../trab ./../../imagens_de_teste/pinguim.png ./../../imagens_alteradas/sequencial/pinguim_0.png 0 3 >> identidade/imagem_minuscula/sequencial.txt
-./../../trab ./../../imagens_de_teste/pinguim.png ./../../imagens_alteradas/sequencial/pinguim_0.png 0 3 >> identidade/imagem_minuscula/sequencial.txt
-./../../trab ./../../imagens_de_teste/pinguim.png ./../../imagens_alteradas/sequencial/pinguim_0.png 0 3 >> identidade/imagem_minuscula/sequencial.txt
-./../../trab ./../../imagens_de_teste/pinguim.png ./../../imagens_alteradas/sequencial/pinguim_0.png 0 3 >> identidade/imagem_minuscula/sequencial.txt

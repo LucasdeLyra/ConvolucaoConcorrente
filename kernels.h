@@ -52,7 +52,7 @@ array2d_t_float * create_prewitt_kernel_x(int dimension) {
     prewitt_kernel_x->height = prewitt_kernel_x->width = dimension;
     for (int i = 0; i < dimension; i++) {
         for (int j = 0; j < dimension; j++) {
-            if ( j == ceil( dimension  / 2 - 1 ) ) {
+            if ( j == ceil( dimension / 2 - 1 ) ) {
                 get_array_float(prewitt_kernel_x)[i][j] = -1.0;
             }
             else if ( j == ceil( ( dimension + 1 ) / 2 ) ) {
@@ -63,29 +63,33 @@ array2d_t_float * create_prewitt_kernel_x(int dimension) {
             }
         }
     }
-    print_float_square_matrix(prewitt_kernel_x, dimension);
     return prewitt_kernel_x;
 }
 
 
-array2d_t_float * create_prewitt_kernel_y(int dimension) {
-    array2d_t_float *prewitt_kernel_y = malloc( sizeof *prewitt_kernel_y + sizeof(float[dimension][dimension]) );
-    prewitt_kernel_y->height = prewitt_kernel_y->width = dimension;
+array2d_t_float * create_sobel_kernel_x(int dimension) {
+    array2d_t_float *sobel_kernel_x = malloc( sizeof *sobel_kernel_x + sizeof(float[dimension][dimension]) );
+    sobel_kernel_x->height = sobel_kernel_x->width = dimension;
     for (int i = 0; i < dimension; i++) {
         for (int j = 0; j < dimension; j++) {
-            if ( i == ceil( dimension / 2 - 1) ) {
-                get_array_float(prewitt_kernel_y)[i][j] = -1.0;
+            if ( j == ceil( dimension / 2 - 1 ) ) {
+                get_array_float(sobel_kernel_x)[i][j] = -1.0;
+                if ( i == 1 ) {
+                    get_array_float(sobel_kernel_x)[i][j] = -2.0;
+                } 
             }
-            else if ( i == ceil( ( dimension + 1 ) / 2 ) ) {
-                get_array_float(prewitt_kernel_y)[i][j] = 1.0;
+            else if ( j == ceil( ( dimension + 1 ) / 2 ) ) {
+                get_array_float(sobel_kernel_x)[i][j] = 1.0;
+                if ( i == 1 ) {
+                    get_array_float(sobel_kernel_x)[i][j] = 2.0;
+                } 
             }
             else {
-                get_array_float(prewitt_kernel_y)[i][j] = 0;    
+                get_array_float(sobel_kernel_x)[i][j] = 0;    
             }
         }
     }
-    print_float_square_matrix(prewitt_kernel_y, dimension);
-    return prewitt_kernel_y;
+    return sobel_kernel_x;
 }
 
 
@@ -99,7 +103,7 @@ array2d_t_float * call_create_kernel(int type, int dimension) {
         case 2:
             return create_prewitt_kernel_x(dimension);
         case 3:
-            return create_prewitt_kernel_y(dimension);
+            return create_sobel_kernel_x(dimension);
         default:
             return create_identity_kernel(dimension);
     }

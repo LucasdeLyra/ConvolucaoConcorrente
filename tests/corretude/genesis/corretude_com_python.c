@@ -18,7 +18,7 @@ int main(){
     int python_width, python_height, python_bpp;
     int c_width, c_height, c_bpp;
 
-    uint8_t* python_image = stbi_load("../../../python/images/average0.png", &python_width, &python_height, &python_bpp, 0);
+    uint8_t* python_image = stbi_load("../../../convolucao_python/images/average0.png", &python_width, &python_height, &python_bpp, 0);
     save_file("imagem_python.txt", python_height * python_width * python_bpp, python_image);
 
     uint8_t* c_image = stbi_load("../../../imagens_alteradas/sequencial/teste_media.png", &c_width, &c_height, &c_bpp, 0);

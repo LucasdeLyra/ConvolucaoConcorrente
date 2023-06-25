@@ -1,7 +1,7 @@
 from subprocess import call
 from time import sleep
 
-QTD_AMOSTRAGEM = 300
+QTD_AMOSTRAGEM = 1
 
 
 imagens = {'minuscula': 'pinguim',
@@ -45,18 +45,24 @@ cmds = {'minuscula': [f'{comando_concorrente(imagem_minuscula, 8, 1)} 3 8',
         }"""
 
 tipos = {0 : 'identidade',
-         1 : 'media'}
+         1 : 'media',
+         2 : 'prewitt',
+         3 : 'sobel'}
 
 for tipo_index in tipos:
+    if tipo_index == 2:
+        imagens = {'minuscula': 'hugo_nobrega_ponto_com',
+           'pequena': 'chuu_flamenguista',
+           'media': 'scooby_doo',
+           'grande': 'TRIBE'
+        }
     for tamanho in imagens:
         threads = 1
         while threads < 9:
             for i in range(QTD_AMOSTRAGEM):
-                sleep(0.2)
-                call(f'{comando_concorrente(imagens[tamanho], threads, tipo_index)} 3 {threads} >> {tipos[tipo_index]}/imagem_{tamanho}/{threads}_threads.txt', shell=True)
+                call(f'{comando_concorrente(imagens[tamanho], threads, tipo_index)} 3 {threads} >> {tipos[tipo_index]}/imagem_{tamanho}/{threads}_threads.csv', shell=True)
                 if threads == 1:
-                    sleep(0.2)
-                    call(f'{comando_sequencial(imagens[tamanho], tipo_index)} 3 >> {tipos[tipo_index]}/imagem_{tamanho}/sequencial.txt', shell=True)
+                    call(f'{comando_sequencial(imagens[tamanho], tipo_index)} 3 >> {tipos[tipo_index]}/imagem_{tamanho}/sequencial.csv', shell=True)
                     
             call(f'echo "{comando_concorrente(imagens[tamanho], threads, tipo_index)} 3 {threads} >> {tipos[tipo_index]}/imagem_{tamanho}/{threads}_threads.txt" >> {tipos[tipo_index]}/imagem_{tamanho}/comandos_concorrentes.txt', shell=True)
             call(f'echo "{comando_sequencial(imagens[tamanho], tipo_index)} 3 >> {tipos[tipo_index]}/imagem_{tamanho}/sequencial.txt" >> {tipos[tipo_index]}/imagem_{tamanho}/comandos_sequenciais.txt', shell=True)
