@@ -1,0 +1,4 @@
+./../../trab ./../../imagens_de_teste/abelha.png ./../../imagens_alteradas/sequencial/abelha_0.png 0 3 >> identidade/imagem_grande/sequencial.txt
+./../../trab ./../../imagens_de_teste/abelha.png ./../../imagens_alteradas/sequencial/abelha_0.png 0 3 >> identidade/imagem_grande/sequencial.txt
+./../../trab ./../../imagens_de_teste/abelha.png ./../../imagens_alteradas/sequencial/abelha_0.png 0 3 >> identidade/imagem_grande/sequencial.txt
+./../../trab ./../../imagens_de_teste/abelha.png ./../../imagens_alteradas/sequencial/abelha_0.png 0 3 >> identidade/imagem_grande/sequencial.txt

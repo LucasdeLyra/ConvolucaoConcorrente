@@ -1,0 +1,4 @@
+./../../concorrente ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/concorrente/scooby_doo_3_1.png 3 3 1 >> sobel/imagem_media/1_threads.txt
+./../../concorrente ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/concorrente/scooby_doo_3_2.png 3 3 2 >> sobel/imagem_media/2_threads.txt
+./../../concorrente ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/concorrente/scooby_doo_3_4.png 3 3 4 >> sobel/imagem_media/4_threads.txt
+./../../concorrente ./../../imagens_de_teste/scooby_doo.png ./../../imagens_alteradas/concorrente/scooby_doo_3_8.png 3 3 8 >> sobel/imagem_media/8_threads.txt

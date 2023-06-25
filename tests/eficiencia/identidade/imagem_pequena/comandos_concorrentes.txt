@@ -1,0 +1,4 @@
+./../../concorrente ./../../imagens_de_teste/firefox.png ./../../imagens_alteradas/concorrente/firefox_0_1.png 0 3 1 >> identidade/imagem_pequena/1_threads.txt
+./../../concorrente ./../../imagens_de_teste/firefox.png ./../../imagens_alteradas/concorrente/firefox_0_2.png 0 3 2 >> identidade/imagem_pequena/2_threads.txt
+./../../concorrente ./../../imagens_de_teste/firefox.png ./../../imagens_alteradas/concorrente/firefox_0_4.png 0 3 4 >> identidade/imagem_pequena/4_threads.txt
+./../../concorrente ./../../imagens_de_teste/firefox.png ./../../imagens_alteradas/concorrente/firefox_0_8.png 0 3 8 >> identidade/imagem_pequena/8_threads.txt

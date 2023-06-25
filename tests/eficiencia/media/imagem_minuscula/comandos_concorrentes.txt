@@ -1,0 +1,4 @@
+./../../concorrente ./../../imagens_de_teste/pinguim.png ./../../imagens_alteradas/concorrente/pinguim_1_1.png 1 3 1 >> media/imagem_minuscula/1_threads.txt
+./../../concorrente ./../../imagens_de_teste/pinguim.png ./../../imagens_alteradas/concorrente/pinguim_1_2.png 1 3 2 >> media/imagem_minuscula/2_threads.txt
+./../../concorrente ./../../imagens_de_teste/pinguim.png ./../../imagens_alteradas/concorrente/pinguim_1_4.png 1 3 4 >> media/imagem_minuscula/4_threads.txt
+./../../concorrente ./../../imagens_de_teste/pinguim.png ./../../imagens_alteradas/concorrente/pinguim_1_8.png 1 3 8 >> media/imagem_minuscula/8_threads.txt

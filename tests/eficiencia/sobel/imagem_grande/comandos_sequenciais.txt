@@ -1,0 +1,4 @@
+./../../trab ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/sequencial/TRIBE_3.png 3 3 >> sobel/imagem_grande/sequencial.txt
+./../../trab ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/sequencial/TRIBE_3.png 3 3 >> sobel/imagem_grande/sequencial.txt
+./../../trab ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/sequencial/TRIBE_3.png 3 3 >> sobel/imagem_grande/sequencial.txt
+./../../trab ./../../imagens_de_teste/TRIBE.png ./../../imagens_alteradas/sequencial/TRIBE_3.png 3 3 >> sobel/imagem_grande/sequencial.txt

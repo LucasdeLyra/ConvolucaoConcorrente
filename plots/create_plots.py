@@ -3,7 +3,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 pd.set_option('display.max_rows', 5000)
 COLUMNS = ['read', 'pre_processing', 'create_kernel', 'convolution', 'write']
-images = {'minuscula': '236x236', 'pequena': '615x407', 'media': '2480x1365', 'grande': '5600x3200'}
+
+imagens = {'minuscula': '236x236', 
+          'pequena': '615x407', 
+          'media': '2480x1365', 
+          'grande': '5600x3200'}
+tipos = {0 : 'identidade',
+         1 : 'media',
+         2 : 'prewitt',
+         3 : 'sobel'}
 
 
 def merge_all_csv_from_directory(directory):
@@ -30,14 +38,20 @@ def merge_all_csv_from_directory(directory):
 
 
 def get_altogether_convolution_plot(column_name, title):
-    for kernel in ['identidade', 'media']:
-        for image_size in images:
-            dir = rf'./../tests/eficiencia/{kernel}/imagem_{image_size}'
+    for tipo_index in tipos:
+        if tipo_index == 2:
+            imagens = {'minuscula': 'hugo_nobrega_ponto_com',
+            'pequena': 'chuu_flamenguista',
+            'media': 'scooby_doo',
+            'grande': 'TRIBE'
+            }
+        for image_size in imagens:
+            dir = rf'./../tests/eficiencia/{tipos[tipo_index]}/imagem_{image_size}'
             merged_csv = merge_all_csv_from_directory(dir)
 
             fig = sns.relplot(data=merged_csv, x='index', y=f'{column_name}', hue='Threads', hue_order=[0,1,2,4,8], aspect=1.7, palette='deep')
-            fig.set(xlabel = 'Iterações', ylabel = 'Tempo (s)', title = f'{title} para uma imagem de {images[image_size]}')
-            fig.savefig(rf'./plots/{kernel}/{kernel}_{column_name}_{image_size}.png')
+            fig.set(xlabel = 'Iterações', ylabel = 'Tempo (s)', title = f'{title} para uma imagem de {imagens[image_size]}')
+            fig.savefig(rf'./plots/{tipos[tipo_index]}/{tipos[tipo_index]}_{column_name}_{image_size}.png')
             plt.close()
             
             """fig = sns.relplot(data=merged_csv, x='index', y=f'{column_name}', col='Threads', aspect=0.5)
@@ -73,7 +87,7 @@ df = df.merge(df2, on='Threads', how='left')
 
 fig  = sns.scatterplot(data=df, x='index', y='convolution', hue='Threads', hue_order=[0,1,2,4,8], legend='auto', palette='deep')
 sns.lineplot(data=df, x='index', y='Media', hue='Threads', hue_order=[0,1,2,4,8], ax = fig, legend=False, palette='deep')
-fig.set(xlabel = 'Iterações', ylabel = 'Tempo (s)', title = f'Tempo de convolucação para uma imagem de {images["media"]}')
+fig.set(xlabel = 'Iterações', ylabel = 'Tempo (s)', title = f'Tempo de convolucação para uma imagem de {imagens["media"]}')
 plt.legend(bbox_to_anchor=(1.02, 0.55), loc='upper left', borderaxespad=-.5)
 plt.savefig(rf'./plots/teste.png')
 """

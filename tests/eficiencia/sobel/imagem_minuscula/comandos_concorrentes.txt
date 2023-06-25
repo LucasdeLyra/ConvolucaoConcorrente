@@ -1,0 +1,4 @@
+./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_3_1.png 3 3 1 >> sobel/imagem_minuscula/1_threads.txt
+./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_3_2.png 3 3 2 >> sobel/imagem_minuscula/2_threads.txt
+./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_3_4.png 3 3 4 >> sobel/imagem_minuscula/4_threads.txt
+./../../concorrente ./../../imagens_de_teste/hugo_nobrega_ponto_com.png ./../../imagens_alteradas/concorrente/hugo_nobrega_ponto_com_3_8.png 3 3 8 >> sobel/imagem_minuscula/8_threads.txt

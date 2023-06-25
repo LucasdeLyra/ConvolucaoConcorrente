@@ -1,7 +1,6 @@
 from subprocess import call
-from time import sleep
 
-QTD_AMOSTRAGEM = 1
+QTD_AMOSTRAGEM = 300
 
 
 imagens = {'minuscula': 'pinguim',

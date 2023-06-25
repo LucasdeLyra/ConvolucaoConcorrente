@@ -1,0 +1,4 @@
+./../../trab ./../../imagens_de_teste/firefox.png ./../../imagens_alteradas/sequencial/firefox_0.png 0 3 >> identidade/imagem_pequena/sequencial.txt
+./../../trab ./../../imagens_de_teste/firefox.png ./../../imagens_alteradas/sequencial/firefox_0.png 0 3 >> identidade/imagem_pequena/sequencial.txt
+./../../trab ./../../imagens_de_teste/firefox.png ./../../imagens_alteradas/sequencial/firefox_0.png 0 3 >> identidade/imagem_pequena/sequencial.txt
+./../../trab ./../../imagens_de_teste/firefox.png ./../../imagens_alteradas/sequencial/firefox_0.png 0 3 >> identidade/imagem_pequena/sequencial.txt

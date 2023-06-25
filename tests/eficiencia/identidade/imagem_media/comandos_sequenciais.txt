@@ -1,0 +1,4 @@
+./../../trab ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/sequencial/gato_0.png 0 3 >> identidade/imagem_media/sequencial.txt
+./../../trab ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/sequencial/gato_0.png 0 3 >> identidade/imagem_media/sequencial.txt
+./../../trab ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/sequencial/gato_0.png 0 3 >> identidade/imagem_media/sequencial.txt
+./../../trab ./../../imagens_de_teste/gato.png ./../../imagens_alteradas/sequencial/gato_0.png 0 3 >> identidade/imagem_media/sequencial.txt
