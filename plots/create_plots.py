@@ -133,14 +133,19 @@ get_altogether_convolution_plot('read', 'Tempo de leitura')
 get_altogether_convolution_plot('pre_processing', 'Tempo de pré-processamento')
 get_altogether_convolution_plot('write', 'Tempo de escrita')
 get_altogether_convolution_plot('tempo_total', 'Tempo total')"""
+all_in_one_plot_with_subtitles('read', 'Tempo de leitura').savefig(rf'./plots/all_in_one_read.png')
+all_in_one_plot_with_subtitles('write', 'Tempo de escrita').savefig(rf'./plots/all_in_one_write.png')
 
-
-def print_average(column):
+def print_average(column, directory):
     imagens = {'minuscula': '236x236', 
         'pequena': '615x407', 
         'media': '2480x1365', 
         'grande': '5600x3200'}
+    
     df_median = pd.DataFrame() 
+    ef = pd.DataFrame()
+    lista_medias = {}
+    lista_medianas = {}
     for tipo_index in tipos:
         
         if tipo_index == 2:
@@ -154,28 +159,43 @@ def print_average(column):
         for image_size in imagens:
             dir = rf'./../tests/eficiencia/{tipos[tipo_index]}/imagem_{image_size}'
             merged_csv = merge_all_csv_from_directory(dir)
-
+            #df_mean ['Tipo do efeito'] = tipos[tipo_index].capitalize()
             df_mean = pd.concat([df_mean, pd.DataFrame({f'Média da imagem {image_size}': merged_csv.groupby('Threads')[f'{column}'].mean()})], axis=1)
-            aux['Tipo do efeito'] = tipos[tipo_index].capitalize()
-            aux = pd.concat([aux, pd.DataFrame({f'Mediana da imagem {image_size}': merged_csv.groupby('Threads')[f'{column}'].median()})], axis=1)
             
-            #aux = pd.concat([aux, pd.DataFrame([{f'Tipo do efeito': tipos[tipo_index]}])], axis=1)
+            #aux['Tipo do efeito'] = tipos[tipo_index].capitalize()
+            aux = pd.concat([aux, pd.DataFrame({f'Mediana da imagem {image_size}': merged_csv.groupby('Threads')[f'{column}'].median()})], axis=1)
         
-        df_median = pd.concat([df_median, aux.rename(columns={'index': 'Threads'})], axis=0)
+        df_median = pd.concat([df_median, aux.rename(columns={'index': 'Threads'})], axis=0) 
+            
         
         fig, ax = plt.subplots(figsize=(12, 2))
+        fig.suptitle(f'{tipos[tipo_index].capitalize()} - Tempos médios', fontsize=16)
         ax.xaxis.set_visible(False)
         ax.yaxis.set_visible(False)
         ax.set_frame_on(False)
         tabla = pd.plotting.table(ax, df_mean, loc='upper right', colWidths=[0.2]*len(df_mean.columns), cellColours=[['lightcyan']*4, ['paleturquoise']*4, ['lightcyan']*4, ['paleturquoise']*4, ['lightcyan']*4], colColours=['gainsboro']*4, rowColours=['whitesmoke','gainsboro', 'whitesmoke','gainsboro', 'whitesmoke'], cellLoc='left')
         tabla.auto_set_font_size(False)
+        tabla.auto_set_column_width([0,1,2,3,4,5])
         tabla.set_fontsize(9)
         tabla.scale(1.2, 1.2)
-
-        plt.savefig(f'./plots/tabelas/{tipos[tipo_index]}_{column}_mean.png', transparent=True)
+        plt.savefig(f'./plots/tabelas/{directory}/{tipos[tipo_index]}_{column}_mean.png', transparent=True)
+        plt.close()
+        fig, ax = plt.subplots(figsize=(12, 2))
+        fig.suptitle(f'{tipos[tipo_index].capitalize()} - Tempos totais medianos', fontsize=16)
+        ax.xaxis.set_visible(False)
+        ax.yaxis.set_visible(False)
+        ax.set_frame_on(False)
+        tabla = pd.plotting.table(ax, aux, loc='center right', colWidths=[0.2]*len(aux.columns), cellColours=[['lightcyan']*4,['paleturquoise']*4,['lightcyan']*4,['paleturquoise']*4,['lightcyan']*4], colColours=['gainsboro']*4, rowColours=['whitesmoke','gainsboro']*10, cellLoc='left')
+        tabla.auto_set_font_size(False)
+        tabla.auto_set_column_width([0,1,2,3,4,5])
+        tabla.set_fontsize(9)
+        tabla.scale(1.2, 1.2)
+        plt.savefig(f'./plots/tabelas/{directory}/{tipos[tipo_index]}_{column}_median.png', transparent=True)
+        plt.close()
+        lista_medianas[tipo_index] = aux
+        lista_medias[tipo_index] = df_mean
         
-    
-    fig, ax = plt.subplots(figsize=(15, 12))
+    """fig, ax = plt.subplots(figsize=(15, 12))
     ax.xaxis.set_visible(False)
     ax.yaxis.set_visible(False)
     ax.set_frame_on(False)
@@ -184,9 +204,40 @@ def print_average(column):
     tabla.auto_set_column_width([0,1,2,3,4,5])
     tabla.set_fontsize(9)
     tabla.scale(1.3, 1.3)
-    plt.savefig(f'./plots/tabelas/{column}_median.png', transparent=True)
-print_average('convolution')
-print_average('tempo_total')
+    plt.savefig(f'./plots/tabelas/{column}_median.png', transparent=True)"""
+    return {'mean': lista_medias, 'median': lista_medianas}
+
+    
+
+#conv = print_average('convolution', 'convolucao')
+#tempo_total = print_average('tempo_total', 'tempo_total')
+
+def generate_aceleration_table(data, operation, directory):
+    for tipo, resultado in data.items():
+        for efeito, tabela in resultado.items():
+            for i in range(len(tabela)):
+                for j in range(len(tabela.columns)):
+                    tabela.iloc[i][j] = tabela.iloc[4][j]/tabela.iloc[i][j]
+            fig, ax = plt.subplots(figsize=(12, 2))
+            fig.suptitle(f'{tipos[efeito].capitalize()} - Aceleração', fontsize=16)
+            ax.xaxis.set_visible(False)
+            ax.yaxis.set_visible(False)
+            ax.set_frame_on(False)
+            tabla = pd.plotting.table(ax, tabela, loc='center right', colWidths=[0.2]*len(tabela.columns), cellColours=[['lightcyan']*4,['paleturquoise']*4,['lightcyan']*4,['paleturquoise']*4,['lightcyan']*4], colColours=['gainsboro']*4, rowColours=['whitesmoke','gainsboro']*10, cellLoc='left')
+            tabla.auto_set_font_size(False)
+            tabla.auto_set_column_width([0,1,2,3,4,5])
+            tabla.set_fontsize(9)
+            tabla.scale(1.2, 1.2)
+            plt.savefig(f'./plots/tabelas/{directory}/{tipos[efeito]}_{operation}_{tipo}_acceleration.png', transparent=True)
+            plt.close()
+
+        
+
+
+#generate_aceleration_table(conv, 'convolution', 'convolucao')
+#generate_aceleration_table(tempo_total, 'tempo_total', 'tempo_total')
+
+
 """
 df = df.merge(df2, on='Threads', how='left')
 
